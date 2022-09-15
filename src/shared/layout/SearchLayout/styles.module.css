@@ -1,0 +1,44 @@
+.container {
+  max-width: 71rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.title {
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3rem;
+}
+
+.routes {
+  display: inline-block;
+  margin: 1.5rem 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+
+.userList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.leftSide {
+  grid-column: 1/4;
+  background-color: #fff;
+}
+
+.rightSide {
+  grid-column: 4/13;
+  background-color: #fff;
+}
