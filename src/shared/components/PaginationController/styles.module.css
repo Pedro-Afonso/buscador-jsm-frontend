@@ -1,0 +1,57 @@
+.controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  height: 100px;
+  gap: 1.5rem;
+}
+
+.button {
+  width: 1rem;
+  height: 1rem;
+}
+.button:hover {
+  cursor: pointer;
+}
+
+.controller button:first-child,
+.controller button:last-child {
+  color: #fff;
+  background-color: #4a4a4a;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.controller button:first-child:disabled,
+.controller button:last-child:disabled {
+  color: #fff;
+  background-color: #e5e5e5;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.active {
+  font-weight: 700;
+  color: #4a4a4a;
+}
+
+.active:after {
+  content: '';
+  display: block;
+  position: relative;
+  height: 0.25rem;
+  width: 200%;
+  top: 0.75rem;
+  left: -0.5rem;
+  margin-top: -0.25rem;
+  border-radius: 0.5625rem;
+  background-color: #4a4a4a;
+}
+
+.controller span {
+  font-size: 1rem;
+  font-weight: 700;
+}
