@@ -1,6 +1,6 @@
 import styles from './styles.module.css'
 
-import foto from '../../assets/react.svg'
+import user from '../../assets/user1.svg'
 interface ICardSkeletonProps {
   n: number
 }
@@ -13,7 +13,7 @@ export const CardSkeleton: React.FC<ICardSkeletonProps> = ({ n }) => {
       {quantity.map((_, key) => (
         <div key={key} className={styles.card}>
           <div>
-            <img src={foto} alt="/" />
+            <img src={user} alt="/" />
             <div></div>
             <div></div>
             <div></div>
