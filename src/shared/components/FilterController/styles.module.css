@@ -15,6 +15,7 @@
 .container summary {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .container summary::after {
