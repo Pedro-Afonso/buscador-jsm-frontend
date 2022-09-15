@@ -18,7 +18,18 @@
 }
 
 .container summary::after {
-  content: 'teste';
+  content: '';
+  position: relative;
+  top: 0.375rem;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAUCAYAAADskT9PAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADmSURBVHgBtZbRCcIwFEXvLfjvCI7QFbqJP4Kfuk3BHzfQDbqCIzhC/wXry2spAbVNXpILgbR55JwmJQRIyLDH1jUkhDBGwRt0+vBCwyt6GGIS8OD19OphlYgW+AFHikSUwALcLBEsEAA3SQQJ/IUTz7EAOxglVgUW4RUa7b9l3CjBFDjbcQWGo8CNEkyFz/VGCeaAp0gwF9wqwZxwiwRzw2MlWAIeI8FS8FCJSuC3UnCdqp0OLH7NVQv7XknnLK0vAV+RcMzT+A8cdAU6Kehzw/142+FuUQ0vsg3zoEhoQeE4xvTBmg+cALiWpmCWrwAAAABJRU5ErkJggg==');
+  width: 1rem;
+  height: 1rem;
+  background-size: 1rem;
+  background-repeat: no-repeat;
+}
+.container[open] summary::after {
+  content: '';
+  transform: rotate(180deg);
 }
 
 .filterList {
