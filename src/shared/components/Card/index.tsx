@@ -1,3 +1,5 @@
+import { streetNameModifier } from '../../utils/streetNameModifier'
+import { toTitleCase } from '../../utils/toTitleCase'
 import styles from './styles.module.css'
 
 interface ICardProps {
@@ -21,11 +23,11 @@ export const Card: React.FC<ICardProps> = ({
     <article className={styles.card}>
       <section>
         <img src={picture} alt={name.first} />
-        <h3>{`${name.first} ${name.last}`}</h3>
+        <h3>{toTitleCase(`${name.first} ${name.last}`)}</h3>
         <address>
-          <p>{street}</p>
-          <p>{city}</p>
-          <p>{`${state} - CEP: ${postcode}`}</p>
+          <p>{streetNameModifier(street)}</p>
+          <p>{toTitleCase(city)}</p>
+          <p>{`${toTitleCase(state)} - CEP: ${postcode}`}</p>
         </address>
       </section>
     </article>
