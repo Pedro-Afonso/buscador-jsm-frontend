@@ -1,6 +1,4 @@
 import { useEffect } from 'react'
-import { Card } from '../../shared/components/Card'
-import { CardSkeleton } from '../../shared/components/CardSkeleton'
 import { FilterController } from '../../shared/components/FilterController'
 import { OrdenationToolbar } from '../../shared/components/OrdenationToolbar'
 import { PaginationController } from '../../shared/components/PaginationController'
@@ -8,6 +6,7 @@ import { useSearch } from '../../shared/hooks/useSearch'
 import { useFetchUsers } from '../../shared/hooks/useFetchUsers'
 import { IUser } from '../../shared/interface/IUser'
 import { SearchLayout } from '../../shared/layout/SearchLayout'
+import { CardList } from '../../shared/components/CardList'
 
 export const SearchUser = () => {
   const { q, page, limit, state, sort } = useSearch()
@@ -41,21 +40,7 @@ export const SearchUser = () => {
       }
       sideToolbar={<FilterController configFilter={states} />}
     >
-      {!user || loading ? (
-        <CardSkeleton n={limit} />
-      ) : (
-        user.map(({ picture, name, location }, key) => (
-          <Card
-            key={key}
-            picture={picture.medium}
-            name={name}
-            street={location.street}
-            city={location.city}
-            state={location.state}
-            postcode={location.postcode}
-          />
-        ))
-      )}
+      <CardList user={user} loading={loading} quantity={limit} />
     </SearchLayout>
   )
 }
