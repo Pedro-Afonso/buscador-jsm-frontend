@@ -1,23 +1,17 @@
 import { useEffect } from 'react'
-import { FilterController } from '../../shared/components/FilterController'
-import { OrdenationToolbar } from '../../shared/components/OrdenationToolbar'
+
 import { PaginationController } from '../../shared/components/PaginationController'
-import { useSearch } from '../../shared/hooks/useSearch'
+import { OrdenationToolbar } from '../../shared/components/OrdenationToolbar'
+import { FilterController } from '../../shared/components/FilterController'
 import { useFetchUsers } from '../../shared/hooks/useFetchUsers'
-import { IUser } from '../../shared/interface/IUser'
 import { SearchLayout } from '../../shared/layout/SearchLayout'
 import { CardList } from '../../shared/components/CardList'
+import { IUser } from '../../shared/interface/IUser'
 
 export const SearchUser = () => {
-  const { q, page, limit, state, sort } = useSearch()
+  const { user, total, loading, states, params } = useFetchUsers<IUser>()
 
-  const { user, total, loading, states } = useFetchUsers<IUser>(
-    q,
-    page,
-    limit,
-    sort,
-    state
-  )
+  const { page, limit } = params
 
   useEffect(() => {
     window.scroll(0, 0)

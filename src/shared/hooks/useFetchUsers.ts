@@ -1,20 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
+import { useUrlParams } from './useUrlParams'
 
 const api = 'http://localhost:5000/api/users'
 
-export const useFetchUsers = <T>(
-  search: string,
-  page = 1,
-  limit = 9,
-  sort = 'Nome',
-  state = ''
-) => {
+export const useFetchUsers = <T>() => {
   const [user, setUser] = useState<T[]>()
   const [total, setTotal] = useState<number>()
   const [states, setStates] = useState<string[]>()
-  /* const [error, setError] = useState<string>('') */
   const [loading, setLoading] = useState(false)
   const isCancelled = useRef(false)
+
+  const params = useUrlParams()
 
   useEffect(() => {
     isCancelled.current = false
@@ -25,15 +21,15 @@ export const useFetchUsers = <T>(
         if (isCancelled.current) return
         setLoading(true)
 
-        const params = [
-          `q=${search}`,
-          `page=${page}`,
-          `limit=${limit}`,
-          `sort=${sort}`,
-          `locationState=${state}`
+        const urlParams = [
+          `q=${params.search}`,
+          `page=${params.page}`,
+          `limit=${params.limit}`,
+          `sort=${params.sort}`,
+          `locationState=${params.state}`
         ]
 
-        const url = `${api}/search?${params.join('&')}`
+        const url = `${api}/search?${urlParams.join('&')}`
 
         const data = await fetch(url, { signal: controller.signal })
           .then(res => res.json())
@@ -58,7 +54,7 @@ export const useFetchUsers = <T>(
       controller.abort()
       isCancelled.current = true
     }
-  }, [search, limit, page, state, sort])
+  }, [params])
 
-  return { user, total, loading, states }
+  return { user, total, loading, states, params }
 }
